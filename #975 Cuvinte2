@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstring>
+std::string c;
+std::string mini="{";
+std::string nou;
+bool verifpal(std::string c,int st)
+{
+    if(st==c.length()-1){
+        return 1;
+    }
+    if(c[c.length()-1]==c[st]){
+        c.erase(c.end()-1);
+        return verifpal(c,++st);
+    }
+    else{
+        return 0;
+    }
+}
+int main()
+{
+    getline(std::cin,c);
+    for(int i=0;i<c.length();i++)
+    {
+        nou.clear();
+        while(int(c[i])>=97&&int(c[i])<=122)
+        {
+            nou+=c[i];
+            i++;
+        }
+        if(nou.length()>0&&verifpal(nou,0)&&mini>nou)mini=nou;   
+    }
+    if(mini!="{")
+    std::cout<<mini;
+    else 
+    std::cout<<"IMPOSIBIL";
+    return 0;
+}
+//if(c[i]=='a'||c[i]=='o'||c[i]=='u'||c[i]=='e'||c[i]=='i'||c[i]=='A'||c[i]=='O'||c[i]=='U'||c[i]=='E'||c[i]=='I')
+            
